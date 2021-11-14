@@ -36,9 +36,7 @@ public class ImageCache {
         }
         // Go fetch the image.
         
-      let urls = URL(string:   "https://picsum.photos/200")
-        
-        ImageURLProtocol.urlSession().dataTask(with: urls!) { (data, response, error) in
+        ImageURLProtocol.urlSession().dataTask(with: url as URL) { (data, response, error) in
             // Check for the error, then data and try to create the image.
             guard let responseData = data, let image = UIImage(data: responseData),
                 let blocks = self.loadingResponses[url], error == nil else {
